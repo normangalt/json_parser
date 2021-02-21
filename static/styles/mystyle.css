@@ -1,0 +1,36 @@
+.format{
+    background: green;
+    font-family: 'Times New Roman', Times, serif;
+    font-size:large;
+    text-align:center;
+    align-items:center;
+    color:navajowhite;
+    width:30%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.message{
+    text-align:center;
+    align-items:center;
+    font-size:large;
+    font-family:'Times New Roman', Times, serif;
+    background-color:purple;
+    color:navajowhite;
+}
+p{
+    text-align:center;
+    align-items:center;
+    font-size:large;
+    font-family:'Times New Roman', Times, serif;
+    background-color: blue;
+    color:navajowhite;
+}
+body{
+    background:maroon;
+    text-align: center;
+    color:beige;
+    align-content: center;
+}

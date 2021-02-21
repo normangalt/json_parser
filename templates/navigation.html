@@ -1,0 +1,35 @@
+{% block head %}
+<title>JSON FILE PARSER 2021</title>
+<link rel='stylesheet' type ='text/css' href = "{{ url_for('static', filename='styles/mystyle.css') }}"></link>
+{% endblock %}
+
+{% block body %}
+
+    {% if option %}
+        <form action = '/submit_option_2', method="post", class = 'format'>
+            {% if message %}
+                <div>
+                    We found a dictionary in the requested file. Here it's keys.
+                </div>
+            {% else %}
+                <div>
+                    We found a list in the requested file. You display it fuly or choose an index.
+                    (available indexes {{ keys }})
+                </div>
+            {% endif %}
+            {% for key in keys %}
+                <h4 class = 'message'>{{ key }}</h4> <input type="submit", value = '{{ key }}', name = 'key_button'></input> 
+            {% endfor %}
+        </form>
+    {% else %}
+        <form action = '/submit_key', method="post", class = 'format'>
+            <p>
+            <label value='Enter a user name:'></label>
+            <label><h3 class = 'message'>Enter a key:</h3></label>
+            <input type="text", name = 'required_key'></input>
+            </p>
+            <input type="submit", value='SUBMIT'></input>
+        </form>
+    {% endif %}
+
+{% endblock %}

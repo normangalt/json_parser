@@ -1,0 +1,13 @@
+{% block head %}
+<title>JSON FILE PARSER 2021</title>
+<link rel='stylesheet' type ='text/css' href = "{{ url_for('static', filename='styles/mystyle.css') }}"></link>
+{% endblock %}
+
+{% block body %}
+    <h1>The value you've requested is : {{ result }}.</h1>
+    <form action = '/get_back', method='post', class = 'format'>
+        <h2 class = 'message'>Click on the button to return to the starting page:</h2>
+        <input type="submit", value='CLICK ON ME'></input>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>JSON FILE PARSER 2021</title>
+{% endblock %}
+
+{% block body %}
+<form action = '/submit', method="post", class = 'format'>
+    <p>
+    <label value='Enter a user name(@ZelenskyyUa):'></label>
+    <label><h3 class = 'message'>Enter user name:</h3></label>
+    <input type="text", name = 'submission_user_name'></input>
+    </p>
+    <p>
+    <label><h3 class = 'message'>Enter resource url appendix(Example: users/list.json):</h3></label>
+    <input type="text", name = 'submission_resource_url'></input>
+    </p>
+    <p>
+        <label><h3 class = 'message'>Enter how would you like to get data (option 1 - get data by key, option 2 - show all available keys):</h3></label>
+        <input type="text", name = 'option'></input>
+        </p>
+    <p>
+    <input type="submit", value='SUBMIT', id='key_input_fiels'></input>
+    </p>
+</form>
+{% endblock %}

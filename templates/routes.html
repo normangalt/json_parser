@@ -1,0 +1,9 @@
+{% extends "navigation.html" %}
+
+{% block body %}
+    <ul class = 'message'>
+        {% for key in keys %}
+            <li>{{ key }}</li><input type="submit", name = '{{ key }}'></input>
+        {% endfor %}
+    </ul>
+{% endblock %}
