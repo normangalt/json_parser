@@ -17,6 +17,9 @@
                     (available indexes {{ keys }})
                 </div>
             {% endif %}
+            <div>
+                <input type = 'submit', value = 'Show' name = 'key_button'></input>
+            </div>
             {% for key in keys %}
                 <h4 class = 'message'>{{ key }}</h4> <input type="submit", value = '{{ key }}', name = 'key_button'></input> 
             {% endfor %}

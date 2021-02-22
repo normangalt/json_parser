@@ -11,6 +11,7 @@ application = Flask(__name__)
 
 JSON_FILE = None
 OPTION = None
+key_value = None
 
 @application.route('/')
 def index():
@@ -83,16 +84,23 @@ def submit_option_2():
     '''
     Returns a site corresponding to a button.
     '''
-    global JSON_FILE
+    global JSON_FILE, key_value
     used_key = None
-    for key in JSON_FILE:
-        if request.form['key_button'] == key:
-            used_key = key
+
+    if request.form['key_button'] == 'Show':
+        key_value = JSON_FILE
+        return render_template('show_container.html', container = JSON_FILE)
 
     if isinstance(JSON_FILE, dict):
+        for key in JSON_FILE:
+            if request.form['key_button'] == key:
+                used_key = key
         key_value = JSON_FILE[used_key]
 
     else:
+        for key in range(len(JSON_FILE)):
+            if request.form['key_button'] == str(key):
+                used_key = key
         key_value = JSON_FILE[int(used_key)]
 
     if isinstance(key_value, dict):
@@ -103,7 +111,7 @@ def submit_option_2():
                                option = True)
 
     if isinstance(key_value, list):
-        JSON_FILE = [str(index) for index in range(len(key_value))]
+        JSON_FILE = key_value
         if len(key_value) == 0:
             return render_template('result_option_2.html', result = [])
 
@@ -116,10 +124,29 @@ def submit_option_2():
 
 @application.route('/get_back', methods = ['POST'])
 def get_back():
+    global key_value
     '''
     Returns a main site template.
     '''
-    return render_template('index.html')
+    if request.form['back_'] == 'Starting page':
+        return render_template('index.html')
+
+    if isinstance(key_value, dict):
+        JSON_FILE = key_value
+        return render_template('navigation.html',
+                               keys = key_value.keys(),
+                               message=True,
+                               option = True)
+
+    if isinstance(key_value, list):
+        JSON_FILE = key_value
+        if len(key_value) == 0:
+            return render_template('result_option_2.html', result = [])
+
+        return render_template('navigation.html',
+                               keys = list(range(len(key_value))),
+                               message=False,
+                               option = True)
 
 if __name__ == '__main__':
     application.run()
