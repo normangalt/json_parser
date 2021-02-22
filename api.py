@@ -8,6 +8,9 @@ def api_file_retriever(appendix: str, user_name: str):
     '''
     Returns a dictionary of a json file from Twitter API
 using given user name and resource url ending.
+
+    >>> len(list(api_file_retriever('friends/list.json', '@BarackObama').items()))
+    6
     '''
     base_url = 'https://api.twitter.com/'
     access_token = '''AAAAAAAAAAAAAAAAAAAAAJmp\
